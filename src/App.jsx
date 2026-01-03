@@ -96,7 +96,7 @@ const PROJECTS = [
     stack: ["SQL", "Microsoft Excel", "Data Analysis"],
     summary: "Analyzed one month of transaction-level personal expense data using SQL for aggregation and validation. Built a static Excel dashboard with KPI cards and charts to visualize daily spending trends, category-wise distribution, and weekday vs weekend spending behavior.",
     ctas: [
-        { label: "GitHub", href: "https://github.com/suman0936c/EXPENSE_ANALYSIS.git" }
+      { label: "GitHub", href: "https://github.com/suman0936c/EXPENSE_ANALYSIS.git" }
     ],
     icon: <BarChart className="w-5 h-5" />,
     featured: true,
