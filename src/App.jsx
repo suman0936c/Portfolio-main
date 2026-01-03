@@ -2,7 +2,7 @@
 import React, { useEffect, useMemo, useState, useRef } from "react";
 import { 
   ChevronDown, Github, Linkedin, Mail, Phone, ExternalLink, MapPin, 
-  Star, Award, Rocket, User, Globe2, 
+  Star, Award, Rocket, User, Moon, Sun, Globe2, 
   GraduationCap, Cpu, TerminalSquare, Bot, ShieldCheck, Compass, 
   Trophy, ChevronRight, Briefcase, Code, Database, Cloud, Zap,
   Send, MessageCircle, Heart, Calendar, Users, Target, Coffee,
@@ -18,8 +18,8 @@ const INFO = {
   name: "Suman Mohapatra",
   headline: "B.Tech CSE Student • Aspiring Data Analyst",
   location: "Puri,Odisha, India",
-  email: "sumanmohapatra. 2006@gmail.com",
-  summary: "Hello! I'm Suman Mohapatra, a B.Tech Computer Science and Engineering student at the Central University of Haryana. My goal is to become a Data Analyst, and I love diving into datasets to [...]
+  email: "sumanmohapatra.2006@gmail.com",
+  summary: "Hello! I'm Suman Mohapatra, a B.Tech Computer Science and Engineering student at the Central University of Haryana. My goal is to become a Data Analyst, and I love diving into datasets to find the story behind the numbers. Outside of tech, I enjoy chess, watching anime, and exploring new web series.",
   links: {
     github: "https://github.com/suman0936c",
     linkedin: "https://www.linkedin.com/in/suman0936c",
@@ -33,7 +33,7 @@ const EDUCATION = [
   {
     institution: "Central University of Haryana",
     location: "Mahendergarh, India",
-    degree: "B. Tech, Computer Science and Engineering",
+    degree: "B.Tech, Computer Science and Engineering",
     period: "August 2023 - Present",
     description: "Skills: Database Management System (DBMS) · Data Structures · Object-Oriented Programming (OOP)"
   },
@@ -42,21 +42,21 @@ const EDUCATION = [
     location: "Puri, India",
     degree: "12th, PCM",
     period: "Sep 2021 - Apr 2023",
-    description:  "Grade: 93.8%.  Skills: C++ · Python · SQL · C"
+    description: "Grade: 93.8%. Skills: C++ · Python · SQL · C"
   },
   {
     institution: "Odisha Adarsha Vidyalaya",
     location: "Gunupur, India",
-    degree:  "Matriculation (10th)",
+    degree: "Matriculation (10th)",
     period: "Apr 2018 - Apr 2021",
-    description:  "Grade: 90.6%"
+    description: "Grade: 90.6%"
   }
 ];
 
 const SKILLS = {
   Languages: ["Python", "JavaScript", "SQL", "C++", "C", "8086 Assembly"],
   "Frameworks & Libraries": [
-    "React. js", "Tailwind CSS", "Vite", "Node.js", "Pandas", "Scikit-learn", "Matplotlib"
+    "React.js", "Tailwind CSS", "Vite", "Node.js", "Pandas", "Scikit-learn", "Matplotlib"
   ],
   Databases: ["MySQL", "MongoDB", "PostgreSQL", "Firebase"],
   "Tools & Technologies": [
@@ -83,7 +83,7 @@ const EXPERIENCE = [
     org: "Unified Mentor Pvt Ltd.",
     location: "Remote",
     period: "March 2025 – April 2025",
-    bullets:  [
+    bullets: [
       "Successfully completed a one-month internship as a Fullstack Web Development Intern.",
       "Commended for being consistent and hard-working throughout the program.",
     ],
@@ -94,7 +94,7 @@ const PROJECTS = [
   {
     title: "E-commerce Sales Dashboard",
     stack: ["SQL", "Tableau", "Power BI", "Data Analysis"],
-    summary: "Analyzed a large sales dataset using SQL for data extraction and cleaning.  Built an interactive dashboard in Tableau/Power BI to visualize sales trends, top products, and regional perfor[...]
+    summary: "Analyzed a large sales dataset using SQL for data extraction and cleaning. Built an interactive dashboard in Tableau/Power BI to visualize sales trends, top products, and regional performance.",
     ctas: [
       { label: "GitHub", href: "#" },
       { label: "Live Demo", href: "#" },
@@ -107,16 +107,16 @@ const PROJECTS = [
     stack: ["Python", "Scikit-learn", "Pandas", "Machine Learning"],
     summary: "Developed a machine learning model using Python and Scikit-learn to predict student academic performance based on study habits, past grades, and demographic data.",
     ctas: [
-      { label: "GitHub", href:  "https://github.com/suman0936c/student-performance-predictor. git" },
-      { label:  "Live Demo", href: "https://studentperformance-predictor.streamlit.app" },
+      { label: "GitHub", href: "https://github.com/suman0936c/student-performance-predictor.git" },
+      { label: "Live Demo", href: "https://studentperformance-predictor.streamlit.app" },
     ],
-    icon:  <TrendingUp className="w-5 h-5" />,
+    icon: <TrendingUp className="w-5 h-5" />,
     featured: true,
   },
   {
     title: "Market Basket Analysis",
     stack: ["Python", "Pandas", "Excel", "Data Analysis"],
-    summary: "Performed market basket analysis on a retail dataset to identify frequently co-purchased items.  Used Apriori algorithm to generate association rules for marketing strategies.",
+    summary: "Performed market basket analysis on a retail dataset to identify frequently co-purchased items. Used Apriori algorithm to generate association rules for marketing strategies.",
     ctas: [
       { label: "GitHub", href: "#" },
     ],
@@ -124,7 +124,7 @@ const PROJECTS = [
     featured: true,
   },
   {
-    title:  "University Library Website",
+    title: "University Library Website",
     stack: ["React.js", "Tailwind CSS", "Vite"],
     summary: "Developed a modern, responsive website for the Pandit Deendayal Upadhyaya Central Library from scratch, focusing on a clean UI and user experience.",
     ctas: [
@@ -134,7 +134,7 @@ const PROJECTS = [
     icon: <BookOpen className="w-5 h-5" />,
   },
   {
-    title:  "Smart India Hackathon (SIH) 2025",
+    title: "Smart India Hackathon (SIH) 2025",
     stack: ["Data Analysis", "Teamwork", "Problem-Solving"],
     summary: "Participated as part of team 'ByteCode Learners' (Project #25068) to build a solution for real-time groundwater resource evaluation using DWLR data.",
     ctas: [],
@@ -157,8 +157,8 @@ const CERTIFICATES = [
     icon: <ShieldCheck />,
   },
   {
-    title:  "Quantitative Research Job Simulation",
-    issuer:  "JPMorgan Chase & Co.  / Forage",
+    title: "Quantitative Research Job Simulation",
+    issuer: "JPMorgan Chase & Co. / Forage",
     image: "/certificate/jpmorgan.png",
     icon: <Database />,
   },
@@ -208,7 +208,7 @@ const AnimatedCounter = ({ end, duration = 2000, suffix = "" }) => {
           setHasAnimated(true);
           let startTime = null;
           const animate = (currentTime) => {
-            if (! startTime) startTime = currentTime;
+            if (!startTime) startTime = currentTime;
             const progress = Math.min((currentTime - startTime) / duration, 1);
             const easeOutQuart = 1 - Math.pow(1 - progress, 4);
             setCount(Math.floor(easeOutQuart * end));
@@ -219,7 +219,7 @@ const AnimatedCounter = ({ end, duration = 2000, suffix = "" }) => {
           requestAnimationFrame(animate);
         }
       },
-      { threshold:  0.5 }
+      { threshold: 0.5 }
     );
 
     if (ref.current) observer.observe(ref.current);
@@ -238,17 +238,17 @@ const CodeRain = () => {
     left: Math.random() * 100,
     delay: Math.random() * 5,
     duration: Math.random() * 3 + 2,
-    chars: ['0', '1', 'def', 'import', 'SELECT', 'FROM', 'WHERE', 'print', 'return', 'async', 'await', 'const', 'let', 'var', 'function', 'class', 'if', 'else', 'for', 'while', 'try', 'catch', '{}', '[...]
+    chars: ['0', '1', 'def', 'import', 'SELECT', 'FROM', 'WHERE', 'print', 'return', 'async', 'await', 'const', 'let', 'var', 'function', 'class', 'if', 'else', 'for', 'while', 'try', 'catch', '{}', '[]', '()', '=>', '==', '!=', '&&', '||'],
   }));
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0 opacity-20">
-      {codeLines. map((line) => (
+      {codeLines.map((line) => (
         <div
           key={line.id}
           className="absolute text-cyan-400 font-mono text-xs md:text-sm"
           style={{
-            left:  `${line.left}%`,
+            left: `${line.left}%`,
             top: '-10%',
             animation: `codeFall ${line.duration}s linear infinite`,
             animationDelay: `${line.delay}s`,
@@ -293,7 +293,7 @@ const DataStream = () => {
           key={stream.id}
           className="absolute w-0.5 bg-gradient-to-b from-transparent via-cyan-400 to-transparent"
           style={{
-            left:  `${stream.left}%`,
+            left: `${stream.left}%`,
             top: '-10%',
             height: '200px',
             animation: `dataStream ${stream.duration}s linear infinite`,
@@ -322,12 +322,12 @@ const ScrollAnimatedDiv = ({ children, className = "", animation = "fade-up", th
     );
 
     if (ref.current) {
-      observer.observe(ref. current);
+      observer.observe(ref.current);
     }
 
     return () => {
       if (ref.current) {
-        observer. unobserve(ref.current);
+        observer.unobserve(ref.current);
       }
     };
   }, [threshold, delay]);
@@ -336,8 +336,8 @@ const ScrollAnimatedDiv = ({ children, className = "", animation = "fade-up", th
     "fade-up": isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95",
     "fade-in": isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95",
     "slide-left": isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-16",
-    "slide-right":  isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-16",
-    "zoom-in": isVisible ? "opacity-100 scale-100" :  "opacity-0 scale-90",
+    "slide-right": isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-16",
+    "zoom-in": isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90",
   };
 
   return (
@@ -351,7 +351,7 @@ const ScrollAnimatedDiv = ({ children, className = "", animation = "fade-up", th
 };
 
 const Badge = ({ children, variant = "default", className = "", onClick }) => {
-  const baseClasses = "inline-flex items-center rounded-full px-2. 5 py-0.5 text-xs font-semibold font-mono transition-colors xs:text-[0.7rem]";
+  const baseClasses = "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold font-mono transition-colors xs:text-[0.7rem]";
   const variants = {
     default: "bg-gradient-to-r from-cyan-600 to-green-500 text-black hover:from-cyan-500 hover:to-green-400 shadow-lg shadow-cyan-500/50",
     outline: "border border-cyan-500/50 text-cyan-300 hover:bg-cyan-500/10 hover:border-cyan-400",
@@ -369,12 +369,17 @@ const Badge = ({ children, variant = "default", className = "", onClick }) => {
   );
 };
 
-const Button = ({ children, variant = "default", size = "default", className = "", onClick, ...props }) => {
-  const baseClasses = "relative inline-flex items-center justify-center rounded-lg font-medium font-mono transition-all duration-300 focus-visible:outline-none disabled:pointer-events-none disabled:op[...]
-  const variants = {
-    default: "bg-gradient-to-r from-cyan-600 to-green-500 text-black hover: from-cyan-500 hover: to-green-400 shadow-lg hover:shadow-cyan-500/50 border border-cyan-400/50",
+const Button = ({ children, variant = "default", size = "default", className = "", onClick, dark = true, ...props }) => {
+  const baseClasses = "relative inline-flex items-center justify-center rounded-lg font-medium font-mono transition-all duration-300 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 hover:scale-105 active:scale-95 min-w-[44px] min-h-[44px] overflow-hidden group";
+  const variants = dark ? {
+    default: "bg-gradient-to-r from-cyan-600 to-green-500 text-black hover:from-cyan-500 hover:to-green-400 shadow-lg hover:shadow-cyan-500/50 border border-cyan-400/50",
     outline: "border-2 border-cyan-500/50 bg-transparent hover:bg-cyan-500/10 hover:border-cyan-400 text-cyan-300 hover:text-cyan-200 hover:shadow-lg hover:shadow-cyan-500/30",
     ghost: "hover:bg-cyan-500/10 text-cyan-300",
+    success: "bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-500 hover:to-emerald-500 shadow-lg hover:shadow-green-500/50",
+  } : {
+    default: "bg-gradient-to-r from-cyan-600 to-green-500 text-white hover:from-cyan-500 hover:to-green-400 shadow-lg hover:shadow-cyan-500/50 border border-cyan-400/50",
+    outline: "border-2 border-cyan-600/50 bg-transparent hover:bg-cyan-50 hover:border-cyan-500 text-cyan-700 hover:text-cyan-600 hover:shadow-lg hover:shadow-cyan-500/30",
+    ghost: "hover:bg-cyan-50 text-cyan-700",
     success: "bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-500 hover:to-emerald-500 shadow-lg hover:shadow-green-500/50",
   };
   const sizes = {
@@ -403,7 +408,7 @@ const Card = ({ children, className = "", hover = false }) => {
   const cardRef = useRef(null);
 
   const handleMouseMove = (e) => {
-    if (! cardRef.current) return;
+    if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -419,7 +424,7 @@ const Card = ({ children, className = "", hover = false }) => {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`group relative rounded-lg border border-cyan-500/20 bg-black/40 shadow-lg shadow-cyan-500/10 transition-all duration-300 overflow-hidden ${hover ? 'hover:shadow-2xl hover:shadow-cyan[...]
+      className={`group relative rounded-lg border border-cyan-500/20 bg-black/40 shadow-lg shadow-cyan-500/10 transition-all duration-300 overflow-hidden ${hover ? 'hover:shadow-2xl hover:shadow-cyan-500/20 hover:border-cyan-400/40' : ''} ${className}`}
       style={{
         transform: hover && mousePosition.x !== 0
           ? `perspective(1000px) rotateY(${(mousePosition.x - 50) / 20}deg) rotateX(${-(mousePosition.y - 50) / 20}deg) scale(1.02)`
@@ -441,7 +446,7 @@ const Card = ({ children, className = "", hover = false }) => {
 };
 
 const CardHeader = ({ children, className = "" }) => (
-  <div className={`flex flex-col space-y-1. 5 p-6 xs:p-4 ${className}`}>
+  <div className={`flex flex-col space-y-1.5 p-6 xs:p-4 ${className}`}>
     {children}
   </div>
 );
@@ -458,16 +463,16 @@ const CardContent = ({ children, className = "" }) => (
   </div>
 );
 
-const Input = ({ className = "", ... props }) => (
+const Input = ({ className = "", ...props }) => (
   <input
-    className={`flex h-10 w-full rounded-md border border-cyan-500/30 bg-black/40 px-3 py-2 text-sm xs:text-xs placeholder: text-cyan-400/50 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:bo[...]
-    {... props}
+    className={`flex h-10 w-full rounded-md border border-cyan-500/30 bg-black/40 px-3 py-2 text-sm xs:text-xs placeholder:text-cyan-400/50 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-400 transition-all text-cyan-200 font-mono min-h-[44px] ${className}`}
+    {...props}
   />
 );
 
 const TextArea = ({ className = "", ...props }) => (
   <textarea
-    className={`flex min-h-[80px] w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm xs:text-xs placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transit[...]
+    className={`flex min-h-[80px] w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm xs:text-xs placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:placeholder:text-gray-400 dark:focus:ring-indigo-400 ${className}`}
     {...props}
   />
 );
@@ -481,10 +486,10 @@ const SectionTitle = ({ icon, title, kicker }) => (
         </p>
       )}
       <div className="flex items-center gap-3 group">
-        <div className="p-2 bg-gradient-to-br from-cyan-500/20 to-green-500/20 border border-cyan-500/30 rounded-lg transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 gro[...]
+        <div className="p-2 bg-gradient-to-br from-cyan-500/20 to-green-500/20 border border-cyan-500/30 rounded-lg transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:border-cyan-400/50">
           {React.cloneElement(icon, { className: "w-6 h-6 xs:w-5 xs:h-5 text-cyan-400" })}
         </div>
-        <h2 className="text-3xl xs:text-2xl md:text-4xl font-bold tracking-tight bg-gradient-to-r from-cyan-400 via-green-400 to-cyan-300 bg-clip-text text-transparent font-mono drop-shadow-[0_0_8px_r[...]
+        <h2 className="text-3xl xs:text-2xl md:text-4xl font-bold tracking-tight bg-gradient-to-r from-cyan-400 via-green-400 to-cyan-300 bg-clip-text text-transparent font-mono drop-shadow-[0_0_8px_rgba(0,255,136,0.3)]">
           {title}
         </h2>
       </div>
@@ -510,12 +515,14 @@ const TechBackground = () => (
   </div>
 );
 
-const Glass = ({ children, className = "" }) => (
-  <div className={`relative rounded-lg backdrop-blur-xl shadow-xl p-6 xs:p-4 transition-all duration-300 border border-cyan-500/20 bg-black/60 hover:bg-black/80 hover:border-cyan-400/40 hove[...]
-    <>
-      <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-cyan-500/5 to-transparent pointer-events-none"></div>
-      <div className="absolute inset-0 rounded-lg bg-[linear-gradient(90deg,transparent_0%,rgba(0,255,136,0.03)_50%,transparent_100%)] opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
-    </>
+const Glass = ({ children, className = "", dark = true }) => (
+  <div className={`relative rounded-lg backdrop-blur-xl shadow-xl p-6 xs:p-4 transition-all duration-300 ${dark ? 'border border-cyan-500/20 bg-black/60 hover:bg-black/80 hover:border-cyan-400/40 hover:shadow-cyan-500/20 shadow-cyan-500/10' : 'border border-gray-200 bg-white/80 hover:bg-white hover:border-gray-300 hover:shadow-lg shadow-gray-200/50'} ${className}`}>
+    {dark && (
+      <>
+        <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-cyan-500/5 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-0 rounded-lg bg-[linear-gradient(90deg,transparent_0%,rgba(0,255,136,0.03)_50%,transparent_100%)] opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+      </>
+    )}
     <div className="relative z-10">{children}</div>
   </div>
 );
@@ -524,11 +531,24 @@ const Glass = ({ children, className = "" }) => (
 // MAIN APP
 // ==========================
 export default function Portfolio() {
+  const [dark, setDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }
+    return true;
+  });
   const [activeSection, setActiveSection] = useState('hero');
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const sectionRefs = useRef({});
  
   const [modalImage, setModalImage] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.documentElement.classList.toggle('dark', dark);
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+    }
+  }, [dark]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -542,7 +562,7 @@ export default function Portfolio() {
       { rootMargin: "-50% 0px -50% 0px", threshold: 0 }
     );
 
-    Object.values(sectionRefs. current).forEach((ref) => {
+    Object.values(sectionRefs.current).forEach((ref) => {
       if (ref) observer.observe(ref);
     });
 
@@ -557,7 +577,7 @@ export default function Portfolio() {
   const [activeTag, setActiveTag] = useState(null);
 
   const filteredProjects = PROJECTS.filter((p) => {
-    const matchesQuery = [p.title, p.summary, ... p.stack].join(" ").toLowerCase().includes(query.toLowerCase());
+    const matchesQuery = [p.title, p.summary, ...p.stack].join(" ").toLowerCase().includes(query.toLowerCase());
     const matchesTag = activeTag ? p.stack.some(tag => tag.toLowerCase().includes(activeTag.toLowerCase())) : true;
     return matchesQuery && matchesTag;
   });
@@ -571,35 +591,40 @@ export default function Portfolio() {
     setShowMobileMenu(false);
   };
  
+  // ============================================================
+  // FIX 1: Added 'Skills' and 'Experience' to navItems
+  // ============================================================
   const navItems = [
     { id: 'hero', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'education', label: 'Education' },
     { id: 'skills', label: 'Skills' },
-    { id: 'projects', label: 'Projects' },
     { id: 'experience', label: 'Experience' },
+    { id: 'projects', label: 'Projects' },
     { id: 'certificates', label: 'Certificates' },
     { id: 'achievements', label: 'Achievements' },
     { id: 'contact', label: 'Contact' },
   ];
 
   return (
-    <div className="min-h-screen relative overflow-x-hidden transition-colors duration-300 bg-[#0a0a0a] text-cyan-50" data-theme="dark">
-      <>
-        <TechBackground />
-        <TerminalGrid />
-        <CodeRain />
-        <DataStream />
-      </>
+    <div className={`min-h-screen relative overflow-x-hidden transition-colors duration-300 ${dark ? 'bg-[#0a0a0a] text-cyan-50' : 'bg-gray-50 text-gray-900'}`} data-theme={dark ? 'dark' : 'light'}>
+      {dark && (
+        <>
+          <TechBackground />
+          <TerminalGrid />
+          <CodeRain />
+          <DataStream />
+        </>
+      )}
      
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 px-2 backdrop-blur-xl shadow-lg transition-colors duration-300 bg-black/80 border-b border-cyan-500/20">
+      <header className={`fixed top-0 left-0 right-0 z-50 px-2 backdrop-blur-xl shadow-lg transition-colors duration-300 ${dark ? 'bg-black/80 border-b border-cyan-500/20' : 'bg-white/90 border-b border-gray-200'}`}>
         <div className="mx-auto max-w-6xl flex items-center justify-between p-2 xs:p-3">
             <div className="flex items-center gap-2 xs:gap-3 group cursor-pointer" onClick={() => scrollToSection('hero')}>
-            <div className="p-1. 5 xs:p-2 bg-gradient-to-r from-cyan-500 to-green-400 rounded-lg transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-cyan-5[...]
+            <div className="p-1.5 xs:p-2 bg-gradient-to-r from-cyan-500 to-green-400 rounded-lg transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-cyan-500/50">
               <TerminalSquare className="h-4 w-4 xs:h-5 xs:w-5 text-black font-bold" />
             </div>
-            <span className="font-bold text-base xs:text-lg font-mono transition-all text-cyan-400 group-hover:text-green-400">suman.dev</span>
+            <span className={`font-bold text-base xs:text-lg font-mono transition-all ${dark ? 'text-cyan-400 group-hover:text-green-400' : 'text-gray-800 group-hover:text-cyan-600'}`}>suman.dev</span>
           </div>
          
           <nav className="hidden md:flex items-center gap-4 text-sm font-mono">
@@ -607,11 +632,14 @@ export default function Portfolio() {
               <button 
                 key={item.id}
                 onClick={() => scrollToSection(item.id)} 
-                className={`relative transition-all duration-300 ${activeSection === item.id ? 'opacity-100 font-bold text-cyan-400' : 'opacity-70 hover:opacity-100 hover:text-green-400 text-cyan-300'}`}
+                className={`relative transition-all duration-300 ${dark 
+                  ? activeSection === item.id ? 'opacity-100 font-bold text-cyan-400' : 'opacity-70 hover:opacity-100 hover:text-green-400 text-cyan-300'
+                  : activeSection === item.id ? 'opacity-100 font-bold text-cyan-600' : 'opacity-70 hover:opacity-100 hover:text-cyan-500 text-gray-700'
+                }`}
               >
                 {item.label}
                 {activeSection === item.id && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-gradient-to-r from-cyan-400 to-green-400 shadow-lg shadow-cyan-400/50" />
+                  <span className={`absolute -bottom-1 left-0 right-0 h-0.5 rounded-full ${dark ? 'bg-gradient-to-r from-cyan-400 to-green-400 shadow-lg shadow-cyan-400/50' : 'bg-gradient-to-r from-cyan-600 to-cyan-500 shadow-lg shadow-cyan-500/30'}`}></span>
                 )}
               </button>
             ))}
@@ -619,7 +647,7 @@ export default function Portfolio() {
          
           <div className="flex items-center gap-1 xs:gap-2">
          
-            <a href={INFO. links.linkedin} target="_blank" rel="noreferrer">
+            <a href={INFO.links.linkedin} target="_blank" rel="noreferrer">
               <Button variant="outline" size="icon" className="rounded-full">
                 <Linkedin className="h-4 w-4" />
               </Button>
@@ -635,7 +663,18 @@ export default function Portfolio() {
               </Button>
             </a>
            
-            <button className="md:hidden" onClick={() => setShowMobileMenu(! showMobileMenu)}>
+            <Button 
+              variant="outline" 
+              size="icon" 
+              className="rounded-full" 
+              onClick={() => setDark(!dark)}
+              aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+              dark={dark}
+            >
+              {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </Button>
+           
+            <button className="md:hidden" onClick={() => setShowMobileMenu(!showMobileMenu)}>
               <Menu className="h-5 w-5 xs:h-6 xs:w-6" />
             </button>
           </div>
@@ -647,7 +686,7 @@ export default function Portfolio() {
               <button 
                 key={item.id}
                 onClick={() => scrollToSection(item.id)} 
-                className={`py-1.5 w-full text-center text-sm xs:text-base font-mono transition-all ${activeSection === item.id ? 'opacity-100 font-bold text-cyan-400' : 'opacity-70 hover:opacity-100'}`}
+                className={`py-1.5 w-full text-center text-sm xs:text-base font-mono transition-all ${activeSection === item.id ? 'opacity-100 font-bold text-cyan-400' : 'opacity-70 hover:opacity-100 hover:text-green-400 text-cyan-300'}`}
               >
                 {item.label}
               </button>
@@ -660,7 +699,7 @@ export default function Portfolio() {
         {/* Hero */}
         <section
           id="hero"
-          ref={(el) => (sectionRefs.current. hero = el)}
+          ref={(el) => (sectionRefs.current.hero = el)}
           className="pt-8 xs:pt-10 md:pt-16 pb-6 xs:pb-8 relative"
         >
           <div className="grid md:grid-cols-2 gap-8 xs:gap-10 md:gap-16 items-center">
@@ -668,12 +707,12 @@ export default function Portfolio() {
             <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4 xs:gap-6">
               <ScrollAnimatedDiv animation="zoom-in" threshold={0.3}>
                 <div className="relative group">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500 via-green-400 to-cyan-400 opacity-60 blur-xl group-hover:opacity-100 transition-opacity duration-300 anim[...]
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500 via-green-400 to-cyan-400 opacity-60 blur-xl group-hover:opacity-100 transition-opacity duration-300 animate-pulse shadow-lg shadow-cyan-500/50"></div>
                   <div className="absolute inset-0 rounded-full border-2 border-cyan-400/50 animate-ping"></div>
                   <img
                     src={INFO.profileImage}
                     alt="Suman Mohapatra"
-                    className="relative w-20 h-20 xs:w-24 xs:h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full object-cover shadow-2xl border-4 border-cyan-500/50 max-w-full transform transition-trans[...]
+                    className="relative w-20 h-20 xs:w-24 xs:h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full object-cover shadow-2xl border-4 border-cyan-500/50 max-w-full transform transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
               </ScrollAnimatedDiv>
@@ -705,8 +744,8 @@ export default function Portfolio() {
                       Let's Connect <Linkedin className="ml-2 h-4 w-4 xs:h-5 xs:w-5 group-hover:rotate-12 transition-transform" />
                     </Button>
                   </a>
-                  <a href="/resume. pdf" target="_blank" rel="noreferrer" className="group">
-                    <Button variant="outline" size="sm" className="rounded-full px-4 xs: px-6 group-hover:bg-cyan-500/10">
+                  <a href="/resume.pdf" target="_blank" rel="noreferrer" className="group">
+                    <Button variant="outline" size="sm" className="rounded-full px-4 xs:px-6 group-hover:bg-cyan-500/10">
                       <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" /> Resume
                     </Button>
                   </a>
@@ -734,7 +773,7 @@ export default function Portfolio() {
 
             {/* Right Column - Stats */}
             <ScrollAnimatedDiv animation="fade-up" threshold={0.3} delay={0.3}>
-              <Glass className="w-full shadow-xl rounded-2xl">
+              <Glass className="w-full shadow-xl rounded-2xl" dark={dark}>
                 <h3 className="text-xl xs:text-lg font-bold mb-6 xs:mb-8 flex items-center gap-2 justify-center md:justify-start font-mono text-cyan-300">
                   <Trophy className="h-5 w-5 text-green-400" /> Quick Stats
                 </h3>
@@ -754,7 +793,7 @@ export default function Portfolio() {
 
                   <ScrollAnimatedDiv animation="fade-up" threshold={0.3} delay={0.5}>
                     <div className="text-center">
-                      <div className="flex items-center justify-center w-12 h-12 xs: w-14 xs:h-14 bg-cyan-500/10 border border-cyan-500/30 rounded-xl mx-auto mb-3">
+                      <div className="flex items-center justify-center w-12 h-12 xs:w-14 xs:h-14 bg-cyan-500/10 border border-cyan-500/30 rounded-xl mx-auto mb-3">
                         <Briefcase className="w-5 h-5 xs:w-6 xs:h-6 text-green-400" />
                       </div>
                       <div className="text-xl xs:text-2xl font-bold text-green-400 font-mono">
@@ -790,8 +829,8 @@ export default function Portfolio() {
                 </div>
 
                 <ScrollAnimatedDiv animation="fade-up" threshold={0.3} delay={0.8}>
-                  <div className="mt-6 xs:mt-8 p-3 xs:p-4 bg-gradient-to-r from-cyan-500/10 via-green-500/10 to-cyan-500/10 rounded-lg text-center border border-cyan-500/30 relative overflow-hidden gr[...]
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1[...]
+                  <div className="mt-6 xs:mt-8 p-3 xs:p-4 bg-gradient-to-r from-cyan-500/10 via-green-500/10 to-cyan-500/10 rounded-lg text-center border border-cyan-500/30 relative overflow-hidden group font-mono">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                     <p className="text-xs xs:text-sm font-medium relative z-10 flex items-center justify-center gap-2 text-cyan-300">
                       <Rocket className="w-4 h-4 animate-bounce text-green-400" />
                       <span className="font-mono">Available for Data Analyst Internships & Freelance Roles</span>
@@ -804,7 +843,7 @@ export default function Portfolio() {
         </section>
 
         {/* About Section */}
-        <section id="about" ref={(el) => (sectionRefs.current. about = el)} className="py-8 xs:py-12 md:py-16">
+        <section id="about" ref={(el) => (sectionRefs.current.about = el)} className="py-8 xs:py-12 md:py-16">
           <SectionTitle 
             icon={<Lightbulb />} 
             title="About Me" 
@@ -823,7 +862,7 @@ export default function Portfolio() {
         </section>
 
         {/* Education */}
-        <section id="education" ref={(el) => (sectionRefs.current.education = el)} className="py-8 xs: py-12 md:py-16">
+        <section id="education" ref={(el) => (sectionRefs.current.education = el)} className="py-8 xs:py-12 md:py-16">
           <SectionTitle 
             icon={<GraduationCap />} 
             title="Education" 
@@ -859,86 +898,10 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* All Projects - MOVED BELOW EDUCATION */}
-        <section id="projects" ref={(el) => (sectionRefs.current. projects = el)} className="py-8 xs:py-12 md:py-16">
-          <SectionTitle 
-            icon={<Rocket />} 
-            title="All Projects" 
-            kicker="Complete Portfolio" 
-          />
-
-          <ScrollAnimatedDiv animation="fade-up" threshold={0.3}>
-            <div className="mb-6 xs:mb-8 flex flex-col gap-4 md:items-center">
-              <div className="flex-1">
-                <Input 
-                  value={query} 
-                  onChange={(e) => setQuery(e.target. value)} 
-                  placeholder="🔍 Search projects..." 
-                  className="rounded-full h-10 xs:h-12 px-4 xs:px-6" 
-                />
-              </div>
-              <div className="flex flex-wrap gap-2">
-                <Badge 
-                  variant={activeTag === null ? "default" : "outline"} 
-                  className="cursor-pointer px-3 xs:px-4 py-1.5 xs:py-2" 
-                  onClick={() => setActiveTag(null)}
-                >
-                  All Projects
-                </Badge>
-                {allTags.map((tag) => (
-                  <Badge 
-                    key={tag} 
-                    variant={activeTag === tag ? "default" : "outline"} 
-                    className="cursor-pointer px-2 xs:px-3 py-1 xs:py-2" 
-                    onClick={() => setActiveTag(tag)}
-                  >
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-          </ScrollAnimatedDiv>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-6">
-            {filteredProjects.map((project, i) => (
-              <ScrollAnimatedDiv key={i} animation="fade-up" threshold={0.2} delay={(i % 6) * 0.1}>
-                <Card hover className="h-full flex flex-col group">
-                  <div className="p-4 xs:p-6 flex-1 flex flex-col">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 bg-gradient-to-br from-cyan-500/20 to-green-500/20 border border-cyan-500/30 rounded-lg transform transition-all duration-300 group-hover:scale-110 group-hove[...]
-                        {React.cloneElement(project.icon, { className: "w-5 h-5 text-cyan-400" })}
-                      </div>
-                      <h3 className="font-bold text-base xs:text-lg leading-tight group-hover:text-green-400 transition-colors text-cyan-200 font-mono">{project.title}</h3>
-                    </div>
-                   
-                    <p className="text-cyan-100/70 mb-4 flex-1 leading-relaxed text-sm xs: text-base font-mono">
-                      {project.summary}
-                    </p>
-                   
-                    <div className="flex flex-wrap gap-2 mb-4 xs:mb-6">
-                      {project.stack.map((tech) => (
-                        <Badge key={tech} variant="secondary" className="text-[0.7rem] xs:text-xs">{tech}</Badge>
-                      ))}
-                    </div>
-                   
-                    <div className="flex gap-2 mt-auto">
-                      {project.ctas.map((cta, j) => (
-                        <a key={j} href={cta. href} target="_blank" rel="noreferrer" className="group/link">
-                          <Button variant="outline" size="sm" className="rounded-full text-xs xs:text-sm group-hover/link:bg-cyan-500/10">
-                            <ExternalLink className="mr-1 h-3 w-3 xs:h-3. 5 xs:w-3.5 group-hover/link:rotate-45 transition-transform"/>
-                            {cta.label}
-                          </Button>
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                </Card>
-              </ScrollAnimatedDiv>
-            ))}
-          </div>
-        </section>
-
-        {/* Skills Section */}
+        {/* ============================================================
+        FIX 2: ADDED THE MISSING SKILLS SECTION
+        ============================================================
+        */}
         <section id="skills" ref={(el) => (sectionRefs.current.skills = el)} className="py-8 xs:py-12 md:py-16">
           <SectionTitle 
             icon={<Cpu />} 
@@ -972,7 +935,7 @@ export default function Portfolio() {
         </section>
 
         {/* Experience */}
-        <section id="experience" ref={(el) => (sectionRefs.current.experience = el)} className="py-8 xs:py-12 md: py-16">
+        <section id="experience" ref={(el) => (sectionRefs.current.experience = el)} className="py-8 xs:py-12 md:py-16">
           <SectionTitle 
             icon={<TerminalSquare />} 
             title="Experience" 
@@ -989,7 +952,7 @@ export default function Portfolio() {
                         <div className="p-2 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
                           <Briefcase className="w-5 h-5 text-cyan-400" />
                         </div>
-                        <Badge variant="outline">{exp. period}</Badge>
+                        <Badge variant="outline">{exp.period}</Badge>
                       </div>
                       <h3 className="text-xl xs:text-lg font-bold mb-2 text-cyan-200 font-mono">{exp.role}</h3>
                       <p className="text-green-400 font-semibold mb-1 text-sm xs:text-base font-mono">{exp.org}</p>
@@ -1013,7 +976,7 @@ export default function Portfolio() {
                           {exp.links.map((link, k) => (
                             <a key={k} href={link.href} target="_blank" rel="noreferrer">
                               <Button variant="outline" size="sm" className="rounded-full text-xs xs:text-sm">
-                                <ExternalLink className="mr-1. 5 h-3 w-3 xs:h-3.5 xs:w-3.5"/>
+                                <ExternalLink className="mr-1.5 h-3 w-3 xs:h-3.5 xs:w-3.5"/>
                                 {link.label}
                               </Button>
                             </a>
@@ -1027,6 +990,85 @@ export default function Portfolio() {
             ))}
           </div>
         </section>
+       
+        {/* All Projects */}
+        <section id="projects" ref={(el) => (sectionRefs.current.projects = el)} className="py-8 xs:py-12 md:py-16">
+          <SectionTitle 
+            icon={<Rocket />} 
+            title="All Projects" 
+            kicker="Complete Portfolio" 
+          />
+
+          <ScrollAnimatedDiv animation="fade-up" threshold={0.3}>
+            <div className="mb-6 xs:mb-8 flex flex-col gap-4 md:items-center">
+              <div className="flex-1">
+                <Input 
+                  value={query} 
+                  onChange={(e) => setQuery(e.target.value)} 
+                  placeholder="🔍 Search projects..." 
+                  className="rounded-full h-10 xs:h-12 px-4 xs:px-6" 
+                />
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <Badge 
+                  variant={activeTag === null ? "default" : "outline"} 
+                  className="cursor-pointer px-3 xs:px-4 py-1.5 xs:py-2" 
+                  onClick={() => setActiveTag(null)}
+                >
+                  All Projects
+                </Badge>
+                {allTags.map((tag) => (
+                  <Badge 
+                    key={tag} 
+                    variant={activeTag === tag ? "default" : "outline"} 
+                    className="cursor-pointer px-2 xs:px-3 py-1 xs:py-2" 
+                    onClick={() => setActiveTag(tag)}
+                  >
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          </ScrollAnimatedDiv>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-6">
+            {filteredProjects.map((project, i) => (
+              <ScrollAnimatedDiv key={i} animation="fade-up" threshold={0.2} delay={(i % 6) * 0.1}>
+                <Card hover className="h-full flex flex-col group">
+                  <div className="p-4 xs:p-6 flex-1 flex flex-col">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 bg-gradient-to-br from-cyan-500/20 to-green-500/20 border border-cyan-500/30 rounded-lg transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
+                        {React.cloneElement(project.icon, { className: "w-5 h-5 text-cyan-400" })}
+                      </div>
+                      <h3 className="font-bold text-base xs:text-lg leading-tight group-hover:text-green-400 transition-colors text-cyan-200 font-mono">{project.title}</h3>
+                    </div>
+                   
+                    <p className="text-cyan-100/70 mb-4 flex-1 leading-relaxed text-sm xs:text-base font-mono">
+                      {project.summary}
+                    </p>
+                   
+                    <div className="flex flex-wrap gap-2 mb-4 xs:mb-6">
+                      {project.stack.map((tech) => (
+                        <Badge key={tech} variant="secondary" className="text-[0.7rem] xs:text-xs">{tech}</Badge>
+                      ))}
+                    </div>
+                   
+                    <div className="flex gap-2 mt-auto">
+                      {project.ctas.map((cta, j) => (
+                        <a key={j} href={cta.href} target="_blank" rel="noreferrer" className="group/link">
+                          <Button variant="outline" size="sm" className="rounded-full text-xs xs:text-sm group-hover/link:bg-cyan-500/10">
+                            <ExternalLink className="mr-1 h-3 w-3 xs:h-3.5 xs:w-3.5 group-hover/link:rotate-45 transition-transform"/>
+                            {cta.label}
+                          </Button>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </Card>
+              </ScrollAnimatedDiv>
+            ))}
+          </div>
+        </section>
 
         {/* Certificates Section */}
         <section id="certificates" ref={(el) => (sectionRefs.current.certificates = el)} className="py-8 xs:py-12 md:py-16">
@@ -1036,7 +1078,7 @@ export default function Portfolio() {
             kicker="My Credentials" 
           />
          
-          <div className="grid grid-cols-1 md: grid-cols-2 lg: grid-cols-3 gap-4 xs:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-6">
             {CERTIFICATES.map((cert, i) => (
               <ScrollAnimatedDiv key={i} animation="fade-up" threshold={0.2} delay={i * 0.1}>
                 <Card hover className="h-full flex flex-col overflow-hidden group">
@@ -1047,11 +1089,11 @@ export default function Portfolio() {
                       className="h-48 w-full object-cover cursor-pointer transform transition-transform duration-500 group-hover:scale-110" 
                       onClick={() => setModalImage(cert.image)}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end just[...]
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                       <Eye className="text-white w-6 h-6" />
                     </div>
                   </div>
-                  <div className="p-4 xs: p-6 flex-1 flex flex-col">
+                  <div className="p-4 xs:p-6 flex-1 flex flex-col">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-2 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
                         {React.cloneElement(cert.icon, { className: "w-5 h-5 text-cyan-400" })}
@@ -1059,7 +1101,7 @@ export default function Portfolio() {
                       <h3 className="font-bold text-base xs:text-lg leading-tight text-cyan-200 font-mono">{cert.title}</h3>
                     </div>
                     <p className="text-cyan-100/70 text-sm xs:text-base font-mono">
-                      Issued by:  {cert.issuer}
+                      Issued by: {cert.issuer}
                     </p>
                   </div>
                 </Card>
@@ -1069,8 +1111,8 @@ export default function Portfolio() {
         </section>
 
         {/* Leadership & Achievements */}
-        <section id="achievements" ref={(el) => (sectionRefs.current.achievements = el)} className="py-8 xs:py-12 md: py-16">
-          <div className="grid grid-cols-1 md: grid-cols-2 gap-6 xs:gap-8">
+        <section id="achievements" ref={(el) => (sectionRefs.current.achievements = el)} className="py-8 xs:py-12 md:py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 xs:gap-8">
             <ScrollAnimatedDiv animation="fade-up" threshold={0.3}>
               <SectionTitle 
                 icon={<Users />} 
@@ -1124,8 +1166,138 @@ export default function Portfolio() {
             kicker="Let's Connect" 
           />
          
-          <div className="grid grid-cols-1 md: grid-cols-2 gap-6 xs:gap-8 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 xs:gap-8 md:gap-12">
             <ScrollAnimatedDiv animation="fade-up" threshold={0.3}>
               <div className="space-y-4 xs:space-y-6">
                 <Glass>
-                  <h3 className="text-xl
+                  <h3 className="text-xl xs:text-lg font-bold mb-4 text-cyan-300 font-mono">Quick Contact</h3>
+                  <div className="space-y-3 xs:space-y-4">
+                    <ScrollAnimatedDiv animation="fade-up" threshold={0.2} delay={0.1}>
+                      <a href={`mailto:${INFO.email}`} className="flex items-center gap-4 p-3 xs:p-4 rounded-lg hover:bg-cyan-500/10 transition-colors group border border-cyan-500/20">
+                        <div className="p-2 xs:p-3 bg-cyan-500/10 border border-cyan-500/30 rounded-lg group-hover:scale-110 transition-transform">
+                          <Mail className="h-4 w-4 xs:h-5 xs:w-5 text-cyan-400" />
+                        </div>
+                        <div>
+                          <p className="font-semibold text-sm xs:text-base text-cyan-300 font-mono">Email</p>
+                          <p className="text-cyan-100/70 text-xs xs:text-sm font-mono">{INFO.email}</p>
+                        </div>
+                      </a>
+                    </ScrollAnimatedDiv>
+                   
+                    <ScrollAnimatedDiv animation="fade-up" threshold={0.2} delay={0.3}>
+                      <div className="flex items-center gap-4 p-3 xs:p-4 rounded-lg border border-cyan-500/20">
+                        <div className="p-2 xs:p-3 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
+                          <MapPin className="h-4 w-4 xs:h-5 xs:w-5 text-cyan-400" />
+                        </div>
+                        <div>
+                          <p className="font-semibold text-sm xs:text-base text-cyan-300 font-mono">Location</p>
+                          <p className="text-cyan-100/70 text-xs xs:text-sm font-mono">{INFO.location}</p>
+                        </div>
+                      </div>
+                    </ScrollAnimatedDiv>
+                  </div>
+                 
+                  <ScrollAnimatedDiv animation="fade-up" threshold={0.2} delay={0.4}>
+                    <div className="mt-4 xs:mt-6 pt-4 xs:pt-6 border-t border-cyan-500/20">
+                      <p className="text-xs xs:text-sm text-cyan-300/70 mb-4 font-mono">Connect with me:</p>
+                      <div className="flex gap-2 xs:gap-3">
+                        <a href={INFO.links.linkedin} target="_blank" rel="noreferrer">
+                          <Button variant="outline" size="icon" className="rounded-full">
+                            <Linkedin className="h-4 w-4" />
+                          </Button>
+                        </a>
+                        <a href={INFO.links.github} target="_blank" rel="noreferrer">
+                          <Button variant="outline" size="icon" className="rounded-full">
+                            <Github className="h-4 w-4" />
+                          </Button>
+                        </a>
+                        <a href={INFO.links.instagram} target="_blank" rel="noreferrer">
+                          <Button variant="outline" size="icon" className="rounded-full">
+                            <Instagram className="h-4 w-4" />
+                          </Button>
+                        </a>
+                        <a href={`mailto:${INFO.email}`}>
+                          <Button variant="outline" size="icon" className="rounded-full">
+                            <Mail className="h-4 w-4" />
+                          </Button>
+                        </a>
+                      </div>
+                    </div>
+                  </ScrollAnimatedDiv>
+                </Glass>
+              </div>
+            </ScrollAnimatedDiv>
+           
+            <ScrollAnimatedDiv animation="fade-up" threshold={0.3}>
+              <Glass className="h-full">
+                <Coffee className="w-10 h-10 xs:w-12 xs:h-12 text-cyan-400 mx-auto mb-4" />
+                <h3 className="text-xl xs:text-2xl font-bold mb-4 text-center text-cyan-300 font-mono">Ready to collaborate?</h3>
+                <p className="text-cyan-100/80 mb-4 xs:mb-6 max-w-2xl mx-auto text-sm xs:text-base text-center font-mono">
+                  I'm currently open to internships, freelance projects, and exciting collaborations. 
+                  Let's build something amazing together!
+                </p>
+                <div className="flex flex-wrap justify-center gap-2 xs:gap-4">
+                  <Badge variant="success" className="px-3 xs:px-4 py-1.5 xs:py-2 text-xs xs:text-sm">✅ Available for Internships</Badge>
+                  <Badge variant="success" className="px-3 xs:px-4 py-1.5 xs:py-2 text-xs xs:text-sm">✅ Freelance Projects</Badge>
+                  <Badge variant="success" className="px-3 xs:px-4 py-1.5 xs:py-2 text-xs xs:text-sm">✅ Open Source Contributions</Badge>
+                </div>
+              </Glass>
+            </ScrollAnimatedDiv>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="py-8 xs:py-12 border-t border-cyan-500/20">
+        <ScrollAnimatedDiv animation="fade-up" threshold={0.3}>
+          <div className="mx-auto max-w-6xl px-2 xs:px-4 md:px-6">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-2 xs:gap-3">
+                <div className="p-1.5 xs:p-2 bg-gradient-to-r from-cyan-500 to-green-400 rounded-lg shadow-lg shadow-cyan-500/50">
+                  <Sparkles className="h-4 w-4 xs:h-5 xs:w-5 text-black" />
+                </div>
+                <div>
+                  <p className="font-semibold text-sm xs:text-base text-cyan-300 font-mono">{INFO.name}</p>
+                  <p className="text-xs xs:text-sm text-cyan-400/70 font-mono">Aspiring Data Analyst</p>
+                </div>
+              </div>
+             
+              <div className="flex items-center gap-4 xs:gap-6 text-xs xs:text-sm text-cyan-400/70 font-mono">
+                <span>© {new Date().getFullYear()} Built with React & Tailwind CSS</span>
+                <div className="flex items-center gap-1">
+                  <span>Made with</span>
+                  <Heart className="h-3 w-3 xs:h-4 xs:w-4 text-green-400 animate-pulse" />
+                  <span>in India</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ScrollAnimatedDiv>
+      </footer>
+     
+      {/* Certificate Modal */}
+      {modalImage && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 animate-in fade-in duration-300"
+          onClick={() => setModalImage(null)}
+        >
+          <button 
+            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10 p-2 hover:bg-white/10 rounded-full"
+            onClick={() => setModalImage(null)}
+            aria-label="Close modal"
+          >
+            <X className="w-8 h-8" />
+          </button>
+          <div className="relative max-w-[90vw] max-h-[90vh] transform transition-transform duration-300 scale-95 animate-in zoom-in">
+            <img 
+              src={modalImage} 
+              alt="Certificate" 
+              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
