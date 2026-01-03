@@ -231,29 +231,74 @@ const AnimatedCounter = ({ end, duration = 2000, suffix = "" }) => {
   return <span ref={ref}>{count}{suffix}</span>;
 };
 
-// Floating Particles Background
-const FloatingParticles = () => {
-  const particles = Array.from({ length: 50 }, (_, i) => ({
+// Code Rain / Matrix Effect
+const CodeRain = () => {
+  const codeLines = Array.from({ length: 30 }, (_, i) => ({
     id: i,
-    size: Math.random() * 4 + 2,
     left: Math.random() * 100,
-    animationDelay: Math.random() * 20,
-    duration: Math.random() * 20 + 10,
+    delay: Math.random() * 5,
+    duration: Math.random() * 3 + 2,
+    chars: ['0', '1', 'def', 'import', 'SELECT', 'FROM', 'WHERE', 'print', 'return', 'async', 'await', 'const', 'let', 'var', 'function', 'class', 'if', 'else', 'for', 'while', 'try', 'catch', '{}', '[]', '()', '=>', '==', '!=', '&&', '||'],
   }));
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {particles.map((particle) => (
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0 opacity-20">
+      {codeLines.map((line) => (
         <div
-          key={particle.id}
-          className="absolute rounded-full bg-gradient-to-r from-indigo-400/20 via-purple-400/20 to-pink-400/20 dark:from-indigo-500/10 dark:via-purple-500/10 dark:to-pink-500/10"
+          key={line.id}
+          className="absolute text-cyan-400 font-mono text-xs md:text-sm"
           style={{
-            width: `${particle.size}px`,
-            height: `${particle.size}px`,
-            left: `${particle.left}%`,
-            top: `${Math.random() * 100}%`,
-            animation: `float ${particle.duration}s ease-in-out infinite`,
-            animationDelay: `${particle.animationDelay}s`,
+            left: `${line.left}%`,
+            top: '-10%',
+            animation: `codeFall ${line.duration}s linear infinite`,
+            animationDelay: `${line.delay}s`,
+            color: Math.random() > 0.5 ? '#00ff88' : '#00d4ff',
+          }}
+        >
+          {line.chars[Math.floor(Math.random() * line.chars.length)]}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// Terminal Grid Background
+const TerminalGrid = () => {
+  return (
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0 opacity-10">
+      <div className="absolute inset-0" style={{
+        backgroundImage: `
+          linear-gradient(cyan 1px, transparent 1px),
+          linear-gradient(90deg, cyan 1px, transparent 1px)
+        `,
+        backgroundSize: '50px 50px',
+      }}></div>
+    </div>
+  );
+};
+
+// Data Stream Effect
+const DataStream = () => {
+  const streams = Array.from({ length: 15 }, (_, i) => ({
+    id: i,
+    left: Math.random() * 100,
+    delay: Math.random() * 3,
+    duration: Math.random() * 2 + 1.5,
+  }));
+
+  return (
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0 opacity-15">
+      {streams.map((stream) => (
+        <div
+          key={stream.id}
+          className="absolute w-0.5 bg-gradient-to-b from-transparent via-cyan-400 to-transparent"
+          style={{
+            left: `${stream.left}%`,
+            top: '-10%',
+            height: '200px',
+            animation: `dataStream ${stream.duration}s linear infinite`,
+            animationDelay: `${stream.delay}s`,
+            boxShadow: '0 0 10px #00d4ff, 0 0 20px #00d4ff',
           }}
         />
       ))}
@@ -306,12 +351,12 @@ const ScrollAnimatedDiv = ({ children, className = "", animation = "fade-up", th
 };
 
 const Badge = ({ children, variant = "default", className = "", onClick }) => {
-  const baseClasses = "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors xs:text-[0.7rem]";
+  const baseClasses = "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold font-mono transition-colors xs:text-[0.7rem]";
   const variants = {
-    default: "bg-indigo-600 text-white hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600",
-    outline: "border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800",
-    secondary: "bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-100",
-    success: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
+    default: "bg-gradient-to-r from-cyan-600 to-green-500 text-black hover:from-cyan-500 hover:to-green-400 shadow-lg shadow-cyan-500/50",
+    outline: "border border-cyan-500/50 text-cyan-300 hover:bg-cyan-500/10 hover:border-cyan-400",
+    secondary: "bg-cyan-500/10 text-cyan-300 border border-cyan-500/30",
+    success: "bg-green-500/20 text-green-400 border border-green-500/30",
   };
  
   return (
@@ -324,13 +369,18 @@ const Badge = ({ children, variant = "default", className = "", onClick }) => {
   );
 };
 
-const Button = ({ children, variant = "default", size = "default", className = "", onClick, ...props }) => {
-  const baseClasses = "relative inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 hover:scale-105 active:scale-95 min-w-[44px] min-h-[44px] overflow-hidden group";
-  const variants = {
-    default: "bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 shadow-lg hover:shadow-indigo-500/50 dark:from-indigo-500 dark:to-purple-500 dark:hover:from-indigo-600 dark:hover:to-purple-600",
-    outline: "border-2 border-gray-300 bg-transparent hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-800 hover:shadow-lg hover:border-indigo-400 dark:hover:border-indigo-500",
-    ghost: "hover:bg-gray-100 dark:hover:bg-gray-800",
-    success: "bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-700 hover:to-emerald-700 shadow-lg hover:shadow-green-500/50",
+const Button = ({ children, variant = "default", size = "default", className = "", onClick, dark = true, ...props }) => {
+  const baseClasses = "relative inline-flex items-center justify-center rounded-lg font-medium font-mono transition-all duration-300 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 hover:scale-105 active:scale-95 min-w-[44px] min-h-[44px] overflow-hidden group";
+  const variants = dark ? {
+    default: "bg-gradient-to-r from-cyan-600 to-green-500 text-black hover:from-cyan-500 hover:to-green-400 shadow-lg hover:shadow-cyan-500/50 border border-cyan-400/50",
+    outline: "border-2 border-cyan-500/50 bg-transparent hover:bg-cyan-500/10 hover:border-cyan-400 text-cyan-300 hover:text-cyan-200 hover:shadow-lg hover:shadow-cyan-500/30",
+    ghost: "hover:bg-cyan-500/10 text-cyan-300",
+    success: "bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-500 hover:to-emerald-500 shadow-lg hover:shadow-green-500/50",
+  } : {
+    default: "bg-gradient-to-r from-cyan-600 to-green-500 text-white hover:from-cyan-500 hover:to-green-400 shadow-lg hover:shadow-cyan-500/50 border border-cyan-400/50",
+    outline: "border-2 border-cyan-600/50 bg-transparent hover:bg-cyan-50 hover:border-cyan-500 text-cyan-700 hover:text-cyan-600 hover:shadow-lg hover:shadow-cyan-500/30",
+    ghost: "hover:bg-cyan-50 text-cyan-700",
+    success: "bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-500 hover:to-emerald-500 shadow-lg hover:shadow-green-500/50",
   };
   const sizes = {
     default: "h-10 px-4 py-2 xs:h-9 xs:px-3 xs:text-sm",
@@ -374,7 +424,7 @@ const Card = ({ children, className = "", hover = false }) => {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`group relative rounded-xl border bg-white shadow-sm dark:bg-gray-900 dark:border-gray-800 transition-all duration-300 overflow-hidden ${hover ? 'hover:shadow-2xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/20' : ''} ${className}`}
+      className={`group relative rounded-lg border border-cyan-500/20 bg-black/40 shadow-lg shadow-cyan-500/10 transition-all duration-300 overflow-hidden ${hover ? 'hover:shadow-2xl hover:shadow-cyan-500/20 hover:border-cyan-400/40' : ''} ${className}`}
       style={{
         transform: hover && mousePosition.x !== 0
           ? `perspective(1000px) rotateY(${(mousePosition.x - 50) / 20}deg) rotateX(${-(mousePosition.y - 50) / 20}deg) scale(1.02)`
@@ -385,10 +435,11 @@ const Card = ({ children, className = "", hover = false }) => {
         <div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
           style={{
-            background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(99, 102, 241, 0.1), transparent 70%)`,
+            background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(0, 255, 136, 0.1), transparent 70%)`,
           }}
         />
       )}
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(0,255,136,0.03)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       <div className="relative z-10">{children}</div>
     </div>
   );
@@ -414,7 +465,7 @@ const CardContent = ({ children, className = "" }) => (
 
 const Input = ({ className = "", ...props }) => (
   <input
-    className={`flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm xs:text-xs placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:placeholder:text-gray-400 dark:focus:ring-indigo-400 min-h-[44px] ${className}`}
+    className={`flex h-10 w-full rounded-md border border-cyan-500/30 bg-black/40 px-3 py-2 text-sm xs:text-xs placeholder:text-cyan-400/50 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-400 transition-all text-cyan-200 font-mono min-h-[44px] ${className}`}
     {...props}
   />
 );
@@ -430,15 +481,15 @@ const SectionTitle = ({ icon, title, kicker }) => (
   <ScrollAnimatedDiv animation="fade-up" threshold={0.3}>
     <div className="mb-6 xs:mb-4">
       {kicker && (
-        <p className="text-sm xs:text-xs uppercase tracking-widest text-gray-500 mb-2 dark:text-gray-400 font-semibold">
+        <p className="text-sm xs:text-xs uppercase tracking-widest text-cyan-400/60 mb-2 font-semibold font-mono">
           {kicker}
         </p>
       )}
       <div className="flex items-center gap-3 group">
-        <div className="p-2 bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 rounded-lg transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
-          {React.cloneElement(icon, { className: "w-6 h-6 xs:w-5 xs:h-5 text-indigo-600 dark:text-indigo-400" })}
+        <div className="p-2 bg-gradient-to-br from-cyan-500/20 to-green-500/20 border border-cyan-500/30 rounded-lg transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:border-cyan-400/50">
+          {React.cloneElement(icon, { className: "w-6 h-6 xs:w-5 xs:h-5 text-cyan-400" })}
         </div>
-        <h2 className="text-3xl xs:text-2xl md:text-4xl font-bold tracking-tight bg-gradient-to-r from-gray-900 via-indigo-600 to-purple-600 dark:from-white dark:via-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
+        <h2 className="text-3xl xs:text-2xl md:text-4xl font-bold tracking-tight bg-gradient-to-r from-cyan-400 via-green-400 to-cyan-300 bg-clip-text text-transparent font-mono drop-shadow-[0_0_8px_rgba(0,255,136,0.3)]">
           {title}
         </h2>
       </div>
@@ -446,18 +497,32 @@ const SectionTitle = ({ icon, title, kicker }) => (
   </ScrollAnimatedDiv>
 );
 
-const Aura = () => (
+// Tech Background Effects
+const TechBackground = () => (
   <div className="pointer-events-none fixed inset-0 overflow-hidden z-0">
-    <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[36rem] w-[36rem] xs:h-[24rem] xs:w-[24rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-indigo-500 via-purple-400 to-pink-400 dark:opacity-10 animate-pulse"></div>
-    <div className="absolute -bottom-40 right-1/3 h-[28rem] w-[28rem] xs:h-[18rem] xs:w-[18rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-purple-500 via-pink-400 to-red-400 dark:opacity-10 animate-pulse" style={{ animationDelay: '1s' }}></div>
-    <div className="absolute top-1/2 left-10 h-[20rem] w-[20rem] xs:h-[14rem] xs:w-[14rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-violet-500 via-indigo-400 to-blue-400 dark:opacity-10 animate-pulse" style={{ animationDelay: '2s' }}></div>
-    <div className="absolute top-1/4 right-1/4 h-[16rem] w-[16rem] rounded-full blur-3xl opacity-15 bg-gradient-to-tr from-cyan-400 via-blue-400 to-indigo-400 dark:opacity-8 animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+    {/* Glitch scanlines */}
+    <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(transparent_50%,rgba(0,255,136,0.03)_50%)] bg-[length:100%_4px]"></div>
+    
+    {/* Corner tech accents */}
+    <div className="absolute top-0 left-0 w-64 h-64 border-t-2 border-l-2 border-cyan-400/20"></div>
+    <div className="absolute top-0 right-0 w-64 h-64 border-t-2 border-r-2 border-cyan-400/20"></div>
+    <div className="absolute bottom-0 left-0 w-64 h-64 border-b-2 border-l-2 border-cyan-400/20"></div>
+    <div className="absolute bottom-0 right-0 w-64 h-64 border-b-2 border-r-2 border-cyan-400/20"></div>
+    
+    {/* Subtle glow spots */}
+    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl"></div>
+    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-green-500/5 rounded-full blur-3xl"></div>
   </div>
 );
 
-const Glass = ({ children, className = "" }) => (
-  <div className={`relative rounded-2xl border border-white/20 bg-white/70 backdrop-blur-xl shadow-xl dark:bg-gray-900/70 dark:border-gray-700/50 p-6 xs:p-4 transition-all duration-300 hover:bg-white/80 dark:hover:bg-gray-900/80 hover:shadow-2xl ${className}`}>
-    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/50 to-transparent dark:from-white/5 pointer-events-none"></div>
+const Glass = ({ children, className = "", dark = true }) => (
+  <div className={`relative rounded-lg backdrop-blur-xl shadow-xl p-6 xs:p-4 transition-all duration-300 ${dark ? 'border border-cyan-500/20 bg-black/60 hover:bg-black/80 hover:border-cyan-400/40 hover:shadow-cyan-500/20 shadow-cyan-500/10' : 'border border-gray-200 bg-white/80 hover:bg-white hover:border-gray-300 hover:shadow-lg shadow-gray-200/50'} ${className}`}>
+    {dark && (
+      <>
+        <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-cyan-500/5 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-0 rounded-lg bg-[linear-gradient(90deg,transparent_0%,rgba(0,255,136,0.03)_50%,transparent_100%)] opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+      </>
+    )}
     <div className="relative z-10">{children}</div>
   </div>
 );
@@ -542,30 +607,39 @@ export default function Portfolio() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-900 dark:text-white transition-colors duration-300 relative overflow-x-hidden">
-      <Aura />
-      <FloatingParticles />
+    <div className={`min-h-screen relative overflow-x-hidden transition-colors duration-300 ${dark ? 'bg-[#0a0a0a] text-cyan-50' : 'bg-gray-50 text-gray-900'}`} data-theme={dark ? 'dark' : 'light'}>
+      {dark && (
+        <>
+          <TechBackground />
+          <TerminalGrid />
+          <CodeRain />
+          <DataStream />
+        </>
+      )}
      
       {/* Header */}
-      <header className="sticky top-0 z-50 px-2 bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl shadow-lg border-b border-gray-200/50 dark:border-gray-700/50">
+      <header className={`fixed top-0 left-0 right-0 z-50 px-2 backdrop-blur-xl shadow-lg transition-colors duration-300 ${dark ? 'bg-black/80 border-b border-cyan-500/20' : 'bg-white/90 border-b border-gray-200'}`}>
         <div className="mx-auto max-w-6xl flex items-center justify-between p-2 xs:p-3">
             <div className="flex items-center gap-2 xs:gap-3 group cursor-pointer" onClick={() => scrollToSection('hero')}>
-            <div className="p-1.5 xs:p-2 bg-gradient-to-r from-indigo-600 to-indigo-400 rounded-lg transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
-              <User className="h-4 w-4 xs:h-5 xs:w-5 text-white" />
+            <div className="p-1.5 xs:p-2 bg-gradient-to-r from-cyan-500 to-green-400 rounded-lg transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-cyan-500/50">
+              <TerminalSquare className="h-4 w-4 xs:h-5 xs:w-5 text-black font-bold" />
             </div>
-            <span className="font-bold text-base xs:text-lg bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent group-hover:from-indigo-700 group-hover:to-purple-700 transition-all">suman.dev</span>
+            <span className={`font-bold text-base xs:text-lg font-mono transition-all ${dark ? 'text-cyan-400 group-hover:text-green-400' : 'text-gray-800 group-hover:text-cyan-600'}`}>suman.dev</span>
           </div>
          
-          <nav className="hidden md:flex items-center gap-4 text-sm">
+          <nav className="hidden md:flex items-center gap-4 text-sm font-mono">
             {navItems.map((item) => (
               <button 
                 key={item.id}
                 onClick={() => scrollToSection(item.id)} 
-                className={`relative transition-all duration-300 ${activeSection === item.id ? 'opacity-100 font-bold text-indigo-600 dark:text-indigo-400' : 'opacity-80 hover:opacity-100 hover:text-indigo-600 dark:hover:text-indigo-400'}`}
+                className={`relative transition-all duration-300 ${dark 
+                  ? activeSection === item.id ? 'opacity-100 font-bold text-cyan-400' : 'opacity-70 hover:opacity-100 hover:text-green-400 text-cyan-300'
+                  : activeSection === item.id ? 'opacity-100 font-bold text-cyan-600' : 'opacity-70 hover:opacity-100 hover:text-cyan-500 text-gray-700'
+                }`}
               >
                 {item.label}
                 {activeSection === item.id && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full"></span>
+                  <span className={`absolute -bottom-1 left-0 right-0 h-0.5 rounded-full ${dark ? 'bg-gradient-to-r from-cyan-400 to-green-400 shadow-lg shadow-cyan-400/50' : 'bg-gradient-to-r from-cyan-600 to-cyan-500 shadow-lg shadow-cyan-500/30'}`}></span>
                 )}
               </button>
             ))}
@@ -589,15 +663,16 @@ export default function Portfolio() {
               </Button>
             </a>
            
-            {/* <Button 
+            <Button 
               variant="outline" 
               size="icon" 
               className="rounded-full" 
               onClick={() => setDark(!dark)}
               aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+              dark={dark}
             >
               {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </Button> */}
+            </Button>
            
             <button className="md:hidden" onClick={() => setShowMobileMenu(!showMobileMenu)}>
               <Menu className="h-5 w-5 xs:h-6 xs:w-6" />
@@ -606,12 +681,12 @@ export default function Portfolio() {
         </div>
        
         {showMobileMenu && (
-          <nav className="md:hidden flex flex-col items-center pb-3 bg-white/80 dark:bg-gray-900/80">
+          <nav className="md:hidden flex flex-col items-center pb-3 bg-black/90 backdrop-blur-xl border-t border-cyan-500/20">
             {navItems.map((item) => (
               <button 
                 key={item.id}
                 onClick={() => scrollToSection(item.id)} 
-                className={`py-1.5 w-full text-center text-sm xs:text-base transition-opacity ${activeSection === item.id ? 'opacity-100 font-bold text-indigo-600 dark:text-indigo-400' : 'opacity-80 hover:opacity-100'}`}
+                className={`py-1.5 w-full text-center text-sm xs:text-base font-mono transition-all ${activeSection === item.id ? 'opacity-100 font-bold text-cyan-400' : 'opacity-70 hover:opacity-100 hover:text-green-400 text-cyan-300'}`}
               >
                 {item.label}
               </button>
@@ -620,7 +695,7 @@ export default function Portfolio() {
         )}
       </header>
 
-      <main className="mx-auto max-w-6xl px-2 xs:px-4 md:px-6 relative z-10">
+      <main className="mx-auto max-w-6xl px-2 xs:px-4 md:px-6 relative z-10 pt-20">
         {/* Hero */}
         <section
           id="hero"
@@ -632,26 +707,27 @@ export default function Portfolio() {
             <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4 xs:gap-6">
               <ScrollAnimatedDiv animation="zoom-in" threshold={0.3}>
                 <div className="relative group">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-75 blur-xl group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500 via-green-400 to-cyan-400 opacity-60 blur-xl group-hover:opacity-100 transition-opacity duration-300 animate-pulse shadow-lg shadow-cyan-500/50"></div>
+                  <div className="absolute inset-0 rounded-full border-2 border-cyan-400/50 animate-ping"></div>
                   <img
                     src={INFO.profileImage}
                     alt="Suman Mohapatra"
-                    className="relative w-20 h-20 xs:w-24 xs:h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full object-cover shadow-2xl border-4 border-white dark:border-gray-800 max-w-full transform transition-transform duration-300 group-hover:scale-105"
+                    className="relative w-20 h-20 xs:w-24 xs:h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full object-cover shadow-2xl border-4 border-cyan-500/50 max-w-full transform transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
               </ScrollAnimatedDiv>
 
               <div className="w-full flex flex-col items-center md:items-start">
                 <ScrollAnimatedDiv animation="fade-up" threshold={0.3} delay={0.1}>
-                  <h1 className="text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-3">
-                    <span className="bg-gradient-to-r from-indigo-600 via-indigo-500 to-indigo-400 bg-clip-text text-transparent">
+                  <h1 className="text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-3 font-mono">
+                    <span className="bg-gradient-to-r from-cyan-400 via-green-400 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_8px_rgba(0,255,136,0.5)]">
                       {INFO.name}
                     </span>
                   </h1>
                 </ScrollAnimatedDiv>
 
                 <ScrollAnimatedDiv animation="fade-up" threshold={0.3} delay={0.2}>
-                  <p className="text-base xs:text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-4 xs:mb-6 max-w-xl font-medium">
+                  <p className="text-base xs:text-lg md:text-xl text-cyan-300/80 mb-4 xs:mb-6 max-w-xl font-medium font-mono">
                     {INFO.headline}
                   </p>
                 </ScrollAnimatedDiv>
@@ -669,12 +745,12 @@ export default function Portfolio() {
                     </Button>
                   </a>
                   <a href="/resume.pdf" target="_blank" rel="noreferrer" className="group">
-                    <Button variant="outline" size="sm" className="rounded-full px-4 xs:px-6 group-hover:bg-indigo-50 dark:group-hover:bg-indigo-900/20">
+                    <Button variant="outline" size="sm" className="rounded-full px-4 xs:px-6 group-hover:bg-cyan-500/10">
                       <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" /> Resume
                     </Button>
                   </a>
                 </div>
-                <div className="flex items-center justify-center md:justify-start gap-2 text-gray-500 dark:text-gray-400 text-sm xs:text-base">
+                <div className="flex items-center justify-center md:justify-start gap-2 text-cyan-400/70 text-sm xs:text-base font-mono">
                   <MapPin className="h-4 w-4" /> {INFO.location}
                 </div>
               </ScrollAnimatedDiv>
@@ -685,7 +761,7 @@ export default function Portfolio() {
                     <Badge 
                       key={tech}
                       variant="outline" 
-                      className="transform transition-all duration-300 hover:scale-110 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 hover:border-indigo-400 dark:hover:border-indigo-500 cursor-default"
+                      className="transform transition-all duration-300 hover:scale-110 hover:bg-cyan-500/10 hover:border-cyan-400 text-cyan-300 border-cyan-500/30 font-mono cursor-default"
                       style={{ animationDelay: `${idx * 100}ms` }}
                     >
                       {tech}
@@ -697,67 +773,67 @@ export default function Portfolio() {
 
             {/* Right Column - Stats */}
             <ScrollAnimatedDiv animation="fade-up" threshold={0.3} delay={0.3}>
-              <Glass className="w-full shadow-xl rounded-2xl">
-                <h3 className="text-xl xs:text-lg font-bold mb-6 xs:mb-8 flex items-center gap-2 justify-center md:justify-start">
-                  <Trophy className="h-5 w-5 text-yellow-500" /> Quick Stats
+              <Glass className="w-full shadow-xl rounded-2xl" dark={dark}>
+                <h3 className="text-xl xs:text-lg font-bold mb-6 xs:mb-8 flex items-center gap-2 justify-center md:justify-start font-mono text-cyan-300">
+                  <Trophy className="h-5 w-5 text-green-400" /> Quick Stats
                 </h3>
 
                 <div className="grid grid-cols-2 gap-4 xs:gap-6 md:gap-8">
                   <ScrollAnimatedDiv animation="fade-up" threshold={0.3} delay={0.4}>
                     <div className="text-center">
-                      <div className="flex items-center justify-center w-12 h-12 xs:w-14 xs:h-14 bg-gray-100 dark:bg-gray-800 rounded-xl mx-auto mb-3">
-                        <Rocket className="w-5 h-5 xs:w-6 xs:h-6 text-indigo-600 dark:text-indigo-400" />
+                      <div className="flex items-center justify-center w-12 h-12 xs:w-14 xs:h-14 bg-cyan-500/10 border border-cyan-500/30 rounded-xl mx-auto mb-3">
+                        <Rocket className="w-5 h-5 xs:w-6 xs:h-6 text-cyan-400" />
                       </div>
-                      <div className="text-xl xs:text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+                      <div className="text-xl xs:text-2xl font-bold text-cyan-400 font-mono">
                         <AnimatedCounter end={6} suffix="+" />
                       </div>
-                      <div className="text-xs xs:text-sm text-gray-600 dark:text-gray-400">Projects</div>
+                      <div className="text-xs xs:text-sm text-cyan-300/70 font-mono">Projects</div>
                     </div>
                   </ScrollAnimatedDiv>
 
                   <ScrollAnimatedDiv animation="fade-up" threshold={0.3} delay={0.5}>
                     <div className="text-center">
-                      <div className="flex items-center justify-center w-12 h-12 xs:w-14 xs:h-14 bg-gray-100 dark:bg-gray-800 rounded-xl mx-auto mb-3">
-                        <Briefcase className="w-5 h-5 xs:w-6 xs:h-6 text-indigo-600 dark:text-indigo-400" />
+                      <div className="flex items-center justify-center w-12 h-12 xs:w-14 xs:h-14 bg-cyan-500/10 border border-cyan-500/30 rounded-xl mx-auto mb-3">
+                        <Briefcase className="w-5 h-5 xs:w-6 xs:h-6 text-green-400" />
                       </div>
-                      <div className="text-xl xs:text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+                      <div className="text-xl xs:text-2xl font-bold text-green-400 font-mono">
                         <AnimatedCounter end={2} />
                       </div>
-                      <div className="text-xs xs:text-sm text-gray-600 dark:text-gray-400">Internships</div>
+                      <div className="text-xs xs:text-sm text-cyan-300/70 font-mono">Internships</div>
                     </div>
                   </ScrollAnimatedDiv>
 
                   <ScrollAnimatedDiv animation="fade-up" threshold={0.3} delay={0.6}>
                     <div className="text-center">
-                      <div className="flex items-center justify-center w-12 h-12 xs:w-14 xs:h-14 bg-gray-100 dark:bg-gray-800 rounded-xl mx-auto mb-3">
-                        <Award className="w-5 h-5 xs:w-6 xs:h-6 text-indigo-600 dark:text-indigo-400" />
+                      <div className="flex items-center justify-center w-12 h-12 xs:w-14 xs:h-14 bg-cyan-500/10 border border-cyan-500/30 rounded-xl mx-auto mb-3">
+                        <Award className="w-5 h-5 xs:w-6 xs:h-6 text-cyan-400" />
                       </div>
-                      <div className="text-xl xs:text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+                      <div className="text-xl xs:text-2xl font-bold text-cyan-400 font-mono">
                         <AnimatedCounter end={4} />
                       </div>
-                      <div className="text-xs xs:text-sm text-gray-600 dark:text-gray-400">Certificates</div>
+                      <div className="text-xs xs:text-sm text-cyan-300/70 font-mono">Certificates</div>
                     </div>
                   </ScrollAnimatedDiv>
 
                   <ScrollAnimatedDiv animation="fade-up" threshold={0.3} delay={0.7}>
                     <div className="text-center">
-                      <div className="flex items-center justify-center w-12 h-12 xs:w-14 xs:h-14 bg-gray-100 dark:bg-gray-800 rounded-xl mx-auto mb-3">
-                        <Target className="w-5 h-5 xs:w-6 xs:h-6 text-indigo-600 dark:text-indigo-400" />
+                      <div className="flex items-center justify-center w-12 h-12 xs:w-14 xs:h-14 bg-cyan-500/10 border border-cyan-500/30 rounded-xl mx-auto mb-3">
+                        <Target className="w-5 h-5 xs:w-6 xs:h-6 text-green-400" />
                       </div>
-                      <div className="text-xl xs:text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+                      <div className="text-xl xs:text-2xl font-bold text-green-400 font-mono">
                         <AnimatedCounter end={1} />
                       </div>
-                      <div className="text-xs xs:text-sm text-gray-600 dark:text-gray-400">Hackathon</div>
+                      <div className="text-xs xs:text-sm text-cyan-300/70 font-mono">Hackathon</div>
                     </div>
                   </ScrollAnimatedDiv>
                 </div>
 
                 <ScrollAnimatedDiv animation="fade-up" threshold={0.3} delay={0.8}>
-                  <div className="mt-6 xs:mt-8 p-3 xs:p-4 bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 dark:from-indigo-900/20 dark:via-purple-900/20 dark:to-pink-900/20 rounded-xl text-center border border-indigo-200/50 dark:border-indigo-800/50 relative overflow-hidden group">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                    <p className="text-xs xs:text-sm font-medium relative z-10 flex items-center justify-center gap-2">
-                      <Rocket className="w-4 h-4 animate-bounce" />
-                      <span>Available for Data Analyst Internships & Freelance Roles</span>
+                  <div className="mt-6 xs:mt-8 p-3 xs:p-4 bg-gradient-to-r from-cyan-500/10 via-green-500/10 to-cyan-500/10 rounded-lg text-center border border-cyan-500/30 relative overflow-hidden group font-mono">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                    <p className="text-xs xs:text-sm font-medium relative z-10 flex items-center justify-center gap-2 text-cyan-300">
+                      <Rocket className="w-4 h-4 animate-bounce text-green-400" />
+                      <span className="font-mono">Available for Data Analyst Internships & Freelance Roles</span>
                     </p>
                   </div>
                 </ScrollAnimatedDiv>
@@ -776,8 +852,8 @@ export default function Portfolio() {
           <ScrollAnimatedDiv animation="fade-up" threshold={0.3}>
             <Glass>
               <div className="relative">
-                <div className="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 rounded-full"></div>
-                <p className="text-base xs:text-lg leading-relaxed text-gray-700 dark:text-gray-300 pl-6">
+                <div className="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-500 via-green-400 to-cyan-400 rounded-full shadow-lg shadow-cyan-500/50"></div>
+                <p className="text-base xs:text-lg leading-relaxed text-cyan-100/90 pl-6 font-mono">
                   {INFO.summary}
                 </p>
               </div>
@@ -799,19 +875,19 @@ export default function Portfolio() {
                   <div className="flex flex-col gap-4 xs:gap-6">
                     <ScrollAnimatedDiv animation="slide-left" threshold={0.3} delay={0.1}>
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                          <Calendar className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                        <div className="p-2 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
+                          <Calendar className="w-5 h-5 text-cyan-400" />
                         </div>
                         <Badge variant="outline">{edu.period}</Badge>
                       </div>
-                      <h3 className="text-xl xs:text-lg font-bold mb-2">{edu.degree}</h3>
-                      <p className="text-indigo-600 dark:text-indigo-400 font-semibold mb-1 text-sm xs:text-base">{edu.institution}</p>
-                      <p className="text-xs xs:text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
+                      <h3 className="text-xl xs:text-lg font-bold mb-2 text-cyan-200 font-mono">{edu.degree}</h3>
+                      <p className="text-green-400 font-semibold mb-1 text-sm xs:text-base font-mono">{edu.institution}</p>
+                      <p className="text-xs xs:text-sm text-cyan-300/70 flex items-center gap-1 font-mono">
                         <MapPin className="w-3 h-3"/> {edu.location}
                       </p>
                     </ScrollAnimatedDiv>
                     <ScrollAnimatedDiv animation="slide-right" threshold={0.3} delay={0.2}>
-                      <p className="text-gray-700 dark:text-gray-300 text-sm xs:text-base">
+                      <p className="text-cyan-100/80 text-sm xs:text-base font-mono">
                         {edu.description}
                       </p>
                     </ScrollAnimatedDiv>
@@ -836,8 +912,8 @@ export default function Portfolio() {
             {Object.entries(SKILLS).map(([category, skills], i) => (
               <ScrollAnimatedDiv key={category} animation="fade-up" threshold={0.2} delay={i * 0.1}>
                 <Glass>
-                  <h3 className="text-lg xs:text-xl font-bold mb-4 flex items-center gap-2">
-                    <div className="w-1 h-6 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"></div>
+                  <h3 className="text-lg xs:text-xl font-bold mb-4 flex items-center gap-2 text-cyan-300 font-mono">
+                    <div className="w-1 h-6 bg-gradient-to-b from-cyan-500 to-green-400 rounded-full shadow-lg shadow-cyan-500/50"></div>
                     {category}
                   </h3>
                   <div className="flex flex-wrap gap-2">
@@ -873,14 +949,14 @@ export default function Portfolio() {
                   <div className="flex flex-col gap-4 xs:gap-6">
                     <ScrollAnimatedDiv animation="slide-left" threshold={0.2} delay={0.1}>
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                          <Briefcase className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                        <div className="p-2 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
+                          <Briefcase className="w-5 h-5 text-cyan-400" />
                         </div>
                         <Badge variant="outline">{exp.period}</Badge>
                       </div>
-                      <h3 className="text-xl xs:text-lg font-bold mb-2">{exp.role}</h3>
-                      <p className="text-indigo-600 dark:text-indigo-400 font-semibold mb-1 text-sm xs:text-base">{exp.org}</p>
-                      <p className="text-xs xs:text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
+                      <h3 className="text-xl xs:text-lg font-bold mb-2 text-cyan-200 font-mono">{exp.role}</h3>
+                      <p className="text-green-400 font-semibold mb-1 text-sm xs:text-base font-mono">{exp.org}</p>
+                      <p className="text-xs xs:text-sm text-cyan-300/70 flex items-center gap-1 font-mono">
                         <MapPin className="w-3 h-3"/> {exp.location}
                       </p>
                     </ScrollAnimatedDiv>
@@ -888,8 +964,8 @@ export default function Portfolio() {
                     <ScrollAnimatedDiv animation="slide-right" threshold={0.2} delay={0.2}>
                       <ul className="space-y-3">
                         {exp.bullets.map((bullet, j) => (
-                          <li key={j} className="flex gap-3 text-gray-700 dark:text-gray-300 text-sm xs:text-base">
-                            <ChevronRight className="h-4 w-4 mt-1 text-indigo-500 flex-shrink-0"/> 
+                          <li key={j} className="flex gap-3 text-cyan-100/80 text-sm xs:text-base font-mono">
+                            <ChevronRight className="h-4 w-4 mt-1 text-green-400 flex-shrink-0"/> 
                             <span>{bullet}</span>
                           </li>
                         ))}
@@ -961,13 +1037,13 @@ export default function Portfolio() {
                 <Card hover className="h-full flex flex-col group">
                   <div className="p-4 xs:p-6 flex-1 flex flex-col">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 rounded-lg transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
-                        {React.cloneElement(project.icon, { className: "w-5 h-5 text-indigo-600 dark:text-indigo-400" })}
+                      <div className="p-2 bg-gradient-to-br from-cyan-500/20 to-green-500/20 border border-cyan-500/30 rounded-lg transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
+                        {React.cloneElement(project.icon, { className: "w-5 h-5 text-cyan-400" })}
                       </div>
-                      <h3 className="font-bold text-base xs:text-lg leading-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">{project.title}</h3>
+                      <h3 className="font-bold text-base xs:text-lg leading-tight group-hover:text-green-400 transition-colors text-cyan-200 font-mono">{project.title}</h3>
                     </div>
                    
-                    <p className="text-gray-600 dark:text-gray-400 mb-4 flex-1 leading-relaxed text-sm xs:text-base">
+                    <p className="text-cyan-100/70 mb-4 flex-1 leading-relaxed text-sm xs:text-base font-mono">
                       {project.summary}
                     </p>
                    
@@ -980,7 +1056,7 @@ export default function Portfolio() {
                     <div className="flex gap-2 mt-auto">
                       {project.ctas.map((cta, j) => (
                         <a key={j} href={cta.href} target="_blank" rel="noreferrer" className="group/link">
-                          <Button variant="outline" size="sm" className="rounded-full text-xs xs:text-sm group-hover/link:bg-indigo-50 dark:group-hover/link:bg-indigo-900/20">
+                          <Button variant="outline" size="sm" className="rounded-full text-xs xs:text-sm group-hover/link:bg-cyan-500/10">
                             <ExternalLink className="mr-1 h-3 w-3 xs:h-3.5 xs:w-3.5 group-hover/link:rotate-45 transition-transform"/>
                             {cta.label}
                           </Button>
@@ -1019,12 +1095,12 @@ export default function Portfolio() {
                   </div>
                   <div className="p-4 xs:p-6 flex-1 flex flex-col">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                        {React.cloneElement(cert.icon, { className: "w-5 h-5 text-indigo-600 dark:text-indigo-400" })}
+                      <div className="p-2 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
+                        {React.cloneElement(cert.icon, { className: "w-5 h-5 text-cyan-400" })}
                       </div>
-                      <h3 className="font-bold text-base xs:text-lg leading-tight">{cert.title}</h3>
+                      <h3 className="font-bold text-base xs:text-lg leading-tight text-cyan-200 font-mono">{cert.title}</h3>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm xs:text-base">
+                    <p className="text-cyan-100/70 text-sm xs:text-base font-mono">
                       Issued by: {cert.issuer}
                     </p>
                   </div>
@@ -1049,9 +1125,9 @@ export default function Portfolio() {
                     <ScrollAnimatedDiv key={i} animation="fade-up" threshold={0.2} delay={i * 0.1}>
                       <li className="flex gap-3">
                         <div className="p-1 rounded-full mt-1">
-                          <ChevronRight className="h-3 w-3 text-indigo-600 dark:text-indigo-400"/> 
+                          <ChevronRight className="h-3 w-3 text-green-400"/> 
                         </div>
-                        <span className="text-gray-700 dark:text-gray-300 text-sm xs:text-base">{item}</span>
+                        <span className="text-cyan-100/80 text-sm xs:text-base font-mono">{item}</span>
                       </li>
                     </ScrollAnimatedDiv>
                   ))}
@@ -1070,9 +1146,9 @@ export default function Portfolio() {
                     <ScrollAnimatedDiv key={i} animation="fade-up" threshold={0.2} delay={i * 0.1}>
                       <li className="flex gap-3">
                         <div className="p-1 rounded-full mt-1">
-                          <Star className="h-3 w-3 text-yellow-600 dark:text-yellow-400"/> 
+                          <Star className="h-3 w-3 text-green-400"/> 
                         </div>
-                        <span className="text-gray-700 dark:text-gray-300 text-sm xs:text-base">{achievement}</span>
+                        <span className="text-cyan-100/80 text-sm xs:text-base font-mono">{achievement}</span>
                       </li>
                     </ScrollAnimatedDiv>
                   ))}
@@ -1094,36 +1170,36 @@ export default function Portfolio() {
             <ScrollAnimatedDiv animation="fade-up" threshold={0.3}>
               <div className="space-y-4 xs:space-y-6">
                 <Glass>
-                  <h3 className="text-xl xs:text-lg font-bold mb-4">Quick Contact</h3>
+                  <h3 className="text-xl xs:text-lg font-bold mb-4 text-cyan-300 font-mono">Quick Contact</h3>
                   <div className="space-y-3 xs:space-y-4">
                     <ScrollAnimatedDiv animation="fade-up" threshold={0.2} delay={0.1}>
-                      <a href={`mailto:${INFO.email}`} className="flex items-center gap-4 p-3 xs:p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
-                        <div className="p-2 xs:p-3 bg-gray-100 dark:bg-gray-800 rounded-lg group-hover:scale-110 transition-transform">
-                          <Mail className="h-4 w-4 xs:h-5 xs:w-5 text-indigo-600 dark:text-indigo-400" />
+                      <a href={`mailto:${INFO.email}`} className="flex items-center gap-4 p-3 xs:p-4 rounded-lg hover:bg-cyan-500/10 transition-colors group border border-cyan-500/20">
+                        <div className="p-2 xs:p-3 bg-cyan-500/10 border border-cyan-500/30 rounded-lg group-hover:scale-110 transition-transform">
+                          <Mail className="h-4 w-4 xs:h-5 xs:w-5 text-cyan-400" />
                         </div>
                         <div>
-                          <p className="font-semibold text-sm xs:text-base">Email</p>
-                          <p className="text-gray-600 dark:text-gray-400 text-xs xs:text-sm">{INFO.email}</p>
+                          <p className="font-semibold text-sm xs:text-base text-cyan-300 font-mono">Email</p>
+                          <p className="text-cyan-100/70 text-xs xs:text-sm font-mono">{INFO.email}</p>
                         </div>
                       </a>
                     </ScrollAnimatedDiv>
                    
                     <ScrollAnimatedDiv animation="fade-up" threshold={0.2} delay={0.3}>
-                      <div className="flex items-center gap-4 p-3 xs:p-4 rounded-lg">
-                        <div className="p-2 xs:p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                          <MapPin className="h-4 w-4 xs:h-5 xs:w-5 text-indigo-600 dark:text-indigo-400" />
+                      <div className="flex items-center gap-4 p-3 xs:p-4 rounded-lg border border-cyan-500/20">
+                        <div className="p-2 xs:p-3 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
+                          <MapPin className="h-4 w-4 xs:h-5 xs:w-5 text-cyan-400" />
                         </div>
                         <div>
-                          <p className="font-semibold text-sm xs:text-base">Location</p>
-                          <p className="text-gray-600 dark:text-gray-400 text-xs xs:text-sm">{INFO.location}</p>
+                          <p className="font-semibold text-sm xs:text-base text-cyan-300 font-mono">Location</p>
+                          <p className="text-cyan-100/70 text-xs xs:text-sm font-mono">{INFO.location}</p>
                         </div>
                       </div>
                     </ScrollAnimatedDiv>
                   </div>
                  
                   <ScrollAnimatedDiv animation="fade-up" threshold={0.2} delay={0.4}>
-                    <div className="mt-4 xs:mt-6 pt-4 xs:pt-6 border-t dark:border-gray-700">
-                      <p className="text-xs xs:text-sm text-gray-600 dark:text-gray-400 mb-4">Connect with me:</p>
+                    <div className="mt-4 xs:mt-6 pt-4 xs:pt-6 border-t border-cyan-500/20">
+                      <p className="text-xs xs:text-sm text-cyan-300/70 mb-4 font-mono">Connect with me:</p>
                       <div className="flex gap-2 xs:gap-3">
                         <a href={INFO.links.linkedin} target="_blank" rel="noreferrer">
                           <Button variant="outline" size="icon" className="rounded-full">
@@ -1154,9 +1230,9 @@ export default function Portfolio() {
            
             <ScrollAnimatedDiv animation="fade-up" threshold={0.3}>
               <Glass className="h-full">
-                <Coffee className="w-10 h-10 xs:w-12 xs:h-12 text-indigo-600 mx-auto mb-4" />
-                <h3 className="text-xl xs:text-2xl font-bold mb-4 text-center">Ready to collaborate?</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4 xs:mb-6 max-w-2xl mx-auto text-sm xs:text-base text-center">
+                <Coffee className="w-10 h-10 xs:w-12 xs:h-12 text-cyan-400 mx-auto mb-4" />
+                <h3 className="text-xl xs:text-2xl font-bold mb-4 text-center text-cyan-300 font-mono">Ready to collaborate?</h3>
+                <p className="text-cyan-100/80 mb-4 xs:mb-6 max-w-2xl mx-auto text-sm xs:text-base text-center font-mono">
                   I'm currently open to internships, freelance projects, and exciting collaborations. 
                   Let's build something amazing together!
                 </p>
@@ -1172,25 +1248,25 @@ export default function Portfolio() {
       </main>
 
       {/* Footer */}
-      <footer className="py-8 xs:py-12 border-t dark:border-gray-800">
+      <footer className="py-8 xs:py-12 border-t border-cyan-500/20">
         <ScrollAnimatedDiv animation="fade-up" threshold={0.3}>
           <div className="mx-auto max-w-6xl px-2 xs:px-4 md:px-6">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2 xs:gap-3">
-                <div className="p-1.5 xs:p-2 bg-gradient-to-r from-indigo-600 to-indigo-400 rounded-lg">
-                  <Sparkles className="h-4 w-4 xs:h-5 xs:w-5 text-white" />
+                <div className="p-1.5 xs:p-2 bg-gradient-to-r from-cyan-500 to-green-400 rounded-lg shadow-lg shadow-cyan-500/50">
+                  <Sparkles className="h-4 w-4 xs:h-5 xs:w-5 text-black" />
                 </div>
                 <div>
-                  <p className="font-semibold text-sm xs:text-base">{INFO.name}</p>
-                  <p className="text-xs xs:text-sm text-gray-500 dark:text-gray-400">Aspiring Data Analyst</p>
+                  <p className="font-semibold text-sm xs:text-base text-cyan-300 font-mono">{INFO.name}</p>
+                  <p className="text-xs xs:text-sm text-cyan-400/70 font-mono">Aspiring Data Analyst</p>
                 </div>
               </div>
              
-              <div className="flex items-center gap-4 xs:gap-6 text-xs xs:text-sm text-gray-500 dark:text-gray-400">
+              <div className="flex items-center gap-4 xs:gap-6 text-xs xs:text-sm text-cyan-400/70 font-mono">
                 <span>© {new Date().getFullYear()} Built with React & Tailwind CSS</span>
                 <div className="flex items-center gap-1">
                   <span>Made with</span>
-                  <Heart className="h-3 w-3 xs:h-4 xs:w-4 text-red-500 animate-pulse" />
+                  <Heart className="h-3 w-3 xs:h-4 xs:w-4 text-green-400 animate-pulse" />
                   <span>in India</span>
                 </div>
               </div>
