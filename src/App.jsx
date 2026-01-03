@@ -58,7 +58,7 @@ const SKILLS = {
   "Frameworks & Libraries": [
     "React.js", "Tailwind CSS", "Vite", "Node.js", "Pandas", "Scikit-learn", "Matplotlib"
   ],
-  Databases: ["MySQL", "MongoDB", "PostgreSQL", "Firebase"],
+  Databases: ["MySQL", "Firebase"],
   "Tools & Technologies": [
     "Git", "GitHub", "VS Code", "Anaconda", "Tableau", "Power BI", "Video Editing"
   ],
@@ -92,14 +92,13 @@ const EXPERIENCE = [
 
 const PROJECTS = [
   {
-    title: "E-commerce Sales Dashboard",
-    stack: ["SQL", "Tableau", "Power BI", "Data Analysis"],
-    summary: "Analyzed a large sales dataset using SQL for data extraction and cleaning. Built an interactive dashboard in Tableau/Power BI to visualize sales trends, top products, and regional performance.",
+    title: "Personal Expense & Spending Analysis Dashboard",
+    stack: ["SQL", "Microsoft Excel", "Data Analysis"],
+    summary: "Analyzed one month of transaction-level personal expense data using SQL for aggregation and validation. Built a static Excel dashboard with KPI cards and charts to visualize daily spending trends, category-wise distribution, and weekday vs weekend spending behavior.",
     ctas: [
-      { label: "GitHub", href: "#" },
-      { label: "Live Demo", href: "#" },
+      { label: "GitHub", href: "https://github.com/suman0936c/EXPENSE_ANALYSIS.git" },
     ],
-    icon: <ShoppingCart className="w-5 h-5" />,
+    icon: <BarChart3 className="w-5 h-5" />,
     featured: true,
   },
   {
